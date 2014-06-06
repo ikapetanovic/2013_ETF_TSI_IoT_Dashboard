@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/Droptiles.css?v=14" />
+<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/jQuery.MouseWheel.js"></script>
+<script type="text/javascript" src="../../js/AppCommon.js"></script>
+<script type="text/javascript" src="../../js/ChartJS/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="../../js/ChartJS/globalize.min.js"></script>
+<script type="text/javascript" src="../../js/ChartJS/dx.chartjs.js"></script>
+<div id="body">
+	<br/><br/><h1 class="iotText">Pressure History</h1><br/>
+	<form id="iotForm">
+		<label id="iotLabel">From:</label>
+		<select id="iotSelect" name="dateFrom"></select><br/></br>
+		<label id="iotLabel">To:</label>
+		<select id="iotSelect" name="dateTo"></select><br/></br>
+		<button id="iotButton" type="button" class="btn btn-default" onclick="drawChart();">Load</button>
+	</form>
+	<div id="chartContainer"></div>
+</div>

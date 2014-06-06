@@ -1,0 +1,60 @@
+div#chartContainerTemperature
+{
+	width: 100%;
+	height: 100%;
+}
+
+div#chartContainerPressure
+{
+	width: 100%;
+	height: 100%;
+}
+
+div#chartContainerHumidity
+{
+	width: 100%;
+	height: 100%;
+}
+
+div#chartContainerGasConcentration
+{
+	width: 100%;
+	height: 100%;
+}
+
+div#gaugeTemperature
+{
+	width: 100%;
+	height: 100%;
+}
+
+div#gaugePressure
+{
+	padding-top: 10px;
+	width: 90%;
+	height: 90%;
+	margin: 0 auto;
+}
+
+div#gaugeHumidity
+{
+	padding-top: 10px;
+	width: 90%;
+	height: 90%;
+	margin: 0 auto;
+}
+
+div#gaugeGasConcentration
+{
+	width: 90%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+img#avatar
+{
+	max-height: 20px;
+	margin-top: -2px;
+	margin-right:5px;
+	vertical-align: middle;
+}

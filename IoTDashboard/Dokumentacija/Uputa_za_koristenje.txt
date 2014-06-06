@@ -1,0 +1,23 @@
+- Downloadovati i instalirati Mosquitto broker: http://mosquitto.org/download/
+
+Test #1 (provjera brokera):
+
+- Command line #1: cd C:\Program Files (x86)\mosquitto (Napomena: Podesti odgovarajuæu putanju)
+- Command line #1: mosquitto_sub -h localhost -t topic1 ("topic1" je dobrovoljno odabrano)
+- Ne gasiti prozor od Command Processor #1, veæ na njemu posmatrati promjene koje se dešavaju prilikom publisha poruka iz sljedeæeg koraka
+
+- Command line #2: cd C:\Program Files (x86)\mosquitto
+- Command line #2: mosquitto_pub -h localhost -t topic1 -m test1 ("test1" je poruka koja se šalje i prikazuje u prozoru Command Processor #1)
+
+
+Test #2 (provjera skripte):
+
+- Pokrenuti WampServer (ili neki drugi) 
+- Unutar foldera "www" (C:\wamp\www) smjestiti fajlove phpMQTT.php i subscribe.php
+- U fajlu subscribe.php provjeriti da li su ispravni nazivi baze, usera i passworda za pristup bazi podataka
+
+- Command line #1: C:\wamp\bin\php\php5.4.3\php.exe -f C:\wamp\www\subscribe.php (Napomena: podesiti odgovarajuæe putanje i naziv php skripte)
+- Ne gasiti prozor od Command Processor #1
+
+- Command line #2: cd C:\Program Files (x86)\mosquitto
+- Command line #2: mosquitto_pub -h localhost -t topic1 -m message1 ("topic1" bi trebao da veæ postoji u bazi u tabeli "widget" u koloni "topic" kako bi se spasila poruka "message1" u bazu podataka)

@@ -1,0 +1,79 @@
+Upute za kreiranje dinamièkog tile-a:
+
+Napomena:
+Dinamièki tile je tile koji zapravo predstavlja Web stranicu.
+Dakle, struktura dinamièkog tile-a se definira pomoæu HTML-a.
+Sve interakcije sa dinamièkim tile-om se definiraju pomoæu PHP-a (opcionalno i sa JS-om).
+Možda nekome bude trebala neka DRUGA VRSTA tile-a.
+
+1. Otvoriti file Tiles.js koji se nalazi na putanji Droptiles-master/Tiles/Tiles.js.
+
+1.1 Definirati sekciju za novi tile (widget) ispod komentara "// The default tile setup offered to new users.". Npr.:
+
+// The default tile setup offered to new users.
+window.DefaultTiles = [
+    {
+        name :"Section1",
+        tiles: [
+           { id: "Temperature", name:"Temperature" }
+        ]
+    }
+];
+
+1.2 Definirati novi tile ispod komentara "// Definition of the tiles, their default values.". Npr.:
+
+// Definition of the tiles, their default values.
+window.TileBuilders = {
+	Temperature: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "Temperature",
+			color: "bg-color-darken",
+            size: "tile-double tile-double-vertical",
+            label: "Living Room Temperature",
+            slidesFrom: ["Tiles/IntegerWidget/Temperature.php"]
+        };
+    }
+};
+
+Napomena:
+U koraku 1.2 pripremiti korak 2. Definirati polje "slidesFrom".
+Ono sadrži putanju do PHP file-a tile-a.
+Ako je u pitanju neka DRUGA VRSTA tile-a, onda ono ima neka razlièita polja u odnosu na polja dinamièkog tile-a.
+
+2. Kreirati novi folder koji se treba nalaziti na putanji, definiranoj u polju "slidesFrom".
+
+2.1 U tom folderu definirati PHP file koji sadrži HTML. Npr.:
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Living Room Temperature</title>
+		<link rel="stylesheet" type="text/css" href=".././css/bootstrap.min.css">
+	</head>
+	<body>
+		<div id="content">
+			<div id="container">
+				Last value:<br>
+				<span class="label label-default">
+					<?php echo $last_value ?>
+					<span class="input-group-addon">&nbsp;&deg;C</span>
+				</span><br/><br/>
+				New value:
+				<div class="input-group input-group-sm"">
+					<input type="text" class="form-control" placeholder="&deg;C" name="new_value">
+					<div class="input-group-btn">
+						<button class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src=".././js/bootstrap.min.js"></script>
+</html>
+
+Napomena:
+Potrebni servis (potrebne metode) za spremanje podataka u bazu je definiran u PHP file-u "metode_Version2.php" koji se nalazi na Trello-u u karti "Realizacija REST servisa".
+Potrebno je na poèetku PHP file tile-a dodati "require('.././Servis/metode_Version2.php');" i kreirati folder na toj putanji te spremiti odgovarajuæi file u folder.
+Sadržaj ovog PHP file-a možete mijenjati (opcionalno) i objaviti novu verziju (ukoliko ste dosta izmijenili) ili izmijenjenu verziju (ukoliko ste malo mijenjali).
